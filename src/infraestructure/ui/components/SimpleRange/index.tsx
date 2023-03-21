@@ -28,8 +28,6 @@ const SimpleRange:React.FC<SimpleRangeProps> = ({ min , max }) => {
       const rangeLeft = rangeRef?.current?.getBoundingClientRect().left  || 1;
       const mouseX = e.clientX - rangeLeft;
       const percent = (mouseX / rangeWidth) * 100;
-      console.log("🚀 ~ file: index.tsx:31 ~ handleMouseMove ~ percent:", percent)
-      console.log("🚀 ~ file: index.tsx:39 ~ handleMouseMove ~ endValue:", endValue)
 
       if (startDragging) {
         if (percent < 0) {
