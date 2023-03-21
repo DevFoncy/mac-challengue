@@ -15,6 +15,9 @@ function App() {
             <Route path="/exercise1">
                 <Exercise1 />
             </Route>
+            <Route path="/">
+                <Exercise1 />
+            </Route>
             <Route path="/exercise2">
                 <Exercise2 />
             </Route>
