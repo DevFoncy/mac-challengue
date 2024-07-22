@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -12,13 +11,13 @@ function App() {
   return (
     <Router>
         <Switch>
-            <Route path="/exercise1">
+            <Route exact path="/">
                 <Exercise1 />
             </Route>
-            <Route path="/">
+            <Route exact path="/simple-range">
                 <Exercise1 />
             </Route>
-            <Route path="/exercise2">
+            <Route exact path="/fixed-range">
                 <Exercise2 />
             </Route>
         </Switch>

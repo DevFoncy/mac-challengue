@@ -8,14 +8,21 @@ import { SimpleRangeModel } from "../../domain/models/SimpleRange"
 
 import "./styles.css"
 
+const baseUrl = process.env.REACT_APP_API_URL + "slider"
+
 export const Exercise1 = () => {
   const [simpleRange, setSimpleRange] = useState<SimpleRangeModel>({min : 0, max: 100})
   const [json, setJson] = useState<{}>({})
 
   //Function to only show the response in json viewer
   const getJsonObject = async () => {
-    const response = await (await fetch('https://demo7088036.mockable.io/slider')).json();
-    setJson(response)
+    try{
+      const response = await fetch(baseUrl);
+      const data = await response.json();
+      setJson(data)
+    } catch(e){
+     console.log("🚀 ~ getJsonObject ~ e:", e)
+    }
   }
 
   useEffect(() => {
@@ -23,11 +30,13 @@ export const Exercise1 = () => {
     getJsonObject()
   }, [])
 
+  console.log("🚀 ~ Exercise1 ~ simpleRange:", simpleRange)
+
   return (
     <div className='exercise-1'>
        <h1>Simple Range </h1>
        <p>Data provided from 
-         <a href='https://demo7088036.mockable.io/slider' target={"_blank"} rel="noreferrer"> https://demo7088036.mockable.io/slider</a></p>
+         <a href={baseUrl} target={"_blank"} rel="noreferrer"> {baseUrl}</a></p>
          <ReactJson src={json} theme="monokai" style={{width: "300px" , height: "auto" , margin: "auto", marginBottom: "10px", padding: "10px" }}/>
        <SimpleRange min={simpleRange.min} max={simpleRange.max}/>   
     </div>

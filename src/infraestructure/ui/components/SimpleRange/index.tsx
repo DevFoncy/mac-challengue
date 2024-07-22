@@ -37,7 +37,6 @@ const SimpleRange:React.FC<SimpleRangeProps> = ({ min , max }) => {
         } else if (percent >= endValue) {
           setStartValue(endValue - 1);
         } else {
-          console.log("1er if");
           setStartValue(Math.round((percent / 100) * (max - min) + min));
         }
       } else if (endDragging) {
@@ -48,7 +47,6 @@ const SimpleRange:React.FC<SimpleRangeProps> = ({ min , max }) => {
         } else if (percent <= startValue) {
           setEndValue(startValue + 1);
         } else {
-          console.log("2do if");
           setEndValue(Math.round((percent / 100) * (max - min) + min));
         }
       }
